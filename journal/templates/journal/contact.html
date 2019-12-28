@@ -1,0 +1,61 @@
+{% extends 'journal/base.html' %}
+{% load widget_tweaks %}
+
+<html>
+
+<head>
+	<title>{% block head %}Contact Us{% endblock %}</title>
+</head>
+<body>
+
+{% block body %}
+<br><br><br><br>
+
+<div class="container">
+	<!-- 1st row -->
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+		<h1 class="domtxt lead">Contact Us:</h1>	
+			<p class="lead">For any information or complaints, we can be reached using the contact form below.</p>
+			<p class="lead">We also look forward to helping individuals or organisations publicize their upcoming events like inaugural lectures, conferences and workshops.</p>
+			<p class="lead">Thanks.</p>
+			<p><strong class="lead domtxt">Abstractng Team.</strong></p>
+
+			
+		</div>
+
+	</div>
+	<br><br>
+	<!-- 2nd row -->
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+
+			<!-- message alert -->
+            {% for message in messages %}
+                <div class="alert alert-success {{messages.tags}} alert-dimissible domcolor txtcolor" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <strong><span aria-hidden="true">&times;</span></strong>  
+                    </button>
+                    <strong>{{message}}</strong>
+                </div>                              
+            {% endfor %}
+            <!-- end message alert -->
+			
+
+			<form action = '.' method = 'POST' enctype = 'multipart/form-data'>
+               {% csrf_token %}
+              {% render_field form.contact_name class="form-control" placeholder='Full Name' %}<br>
+              {% render_field form.contact_email class="form-control" placeholder='Email Address' %}<br>
+              {% render_field form.content class="form-control" placeholder='Message' %}
+              <input class = 'submit btn-primary domcolor txtcolor' type = 'submit' name = 'submit' value = 'Send Message' /></form>
+		</div>
+	</div>
+</div>
+		
+{% endblock %}
+
+</body>
+</html>
+
+
+ 

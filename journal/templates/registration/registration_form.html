@@ -1,0 +1,40 @@
+{% extends 'journal/base.html'%}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block head %}Sign Up{% endblock %}</title>
+</head>
+
+<body>
+	{% block body %}
+
+	<br><br><br><br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6 margintop" align="center">
+
+				<form method = 'post' action = '.' >
+				{% csrf_token %}
+				{% render_field form.username class="form-control" placeholder='Username' %}<br>
+				{% render_field form.email class="form-control" placeholder='E-mail' %}<br>
+				{% render_field form.password1 class="form-control" placeholder='Password' %}
+				<br>
+				{% render_field form.password2 class="form-control" placeholder='Password confirmation' %}<br>
+						<input class = "btn-primary form-control domcolor" type = 'submit' value = 'Sign Up'/>
+						<span class="domtxt">By signing up to abstractng, you agree to have read and accepted our <strong><a href="" class="domtxt">privacy policy</a></strong>.</span>
+
+				</form>
+
+			</div>
+		</div>
+	</div>	
+	
+
+</body>
+
+</html>
+
+{% endblock %}
+
+

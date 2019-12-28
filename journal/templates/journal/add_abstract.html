@@ -1,0 +1,52 @@
+{% extends 'journal/base.html' %}
+{% load widget_tweaks %}
+<html>
+
+<head>
+<title>{% block head %}Add Abstract{% endblock %}</title>
+</head>
+
+
+
+<body class="container">
+
+		<h1>{% block title %}Abstract Form{% endblock %}</h1>
+
+		{% block body %}
+		<br><br><br><br>
+			
+			<div class="container">
+				<div class="row">
+					<div class=" form-group col-md-offset-2 col-md-8" align="left" >
+						<h4 class='nav-color margintop'><strong class="domtxt">New Abstract:</strong></h4>
+						<form action = "/journal/add_abstract/" method='POST' 
+						enctype ='multipart/form-data'>
+							{% csrf_token %}
+							{{ form.media }}
+							<ul>
+								<li>Please <strong>add only</strong> abstract/paper authored or co-authored by you.</li>
+								<li><strong>Plagiarism</strong> is <strong>strongly prohibited</strong> on abstractng.</li>
+								<li>Every user is <strong>solely responsible</strong> for any abstract/paper he or she adds to abstractng.</li>
+								<li>You <strong>will not </strong>be able to add an abstract/paper <strong>if</strong> your profile is blank.</li>
+							</ul>
+
+							
+					{% render_field form.co_authors class="form-control" placeholder='Co-authors (if any)'%}<br>
+					{% render_field form.department class="form-control" %}<br>
+					{% render_field form.topic class="form-control" placeholder='Topic' %}<br>
+					{% render_field form.publication class="form-control" placeholder='Publication Journal (if any)'%}<br>
+					{% render_field form.content class="form-control" placeholder='Abstract'%}<br>
+					<div style="margin-bottom: 3px;">{% render_field form.image1 class="btn-primary btn-sm txtcolor domcolor" %}</div>
+					<div style="margin-bottom: 3px;">{% render_field form.image2 class="btn-primary btn-sm txtcolor domcolor" %}</div>
+					{% render_field form.image3 class="btn-primary btn-sm txtcolor domcolor" %}<br>
+					
+					<input class='submit btn-primary txtcolor domcolor' type='submit' name='submit' value='Post'/>
+						</form>
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+
+</body>
+
+</html>

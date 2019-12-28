@@ -1,0 +1,477 @@
+{% extends 'journal/base.html' %}
+{% load el_pagination_tags %}
+{% load utility_tags %}
+
+
+{% block head %}
+Abstract
+{% endblock %}
+
+
+
+{% block body %}
+<br><br><br>
+
+<div class="container">
+	<!-- 1st row -->
+	<div class="row">
+
+		<!-- 1st column for abstract list -->
+		<div class="col-sm-8 col-md-8">
+
+			<div>
+				{% if abstract %}
+				<h4 class="domtxt">All Abstracts</h4>
+				<hr>
+					{% paginate abstract %}
+					{% for abstracts in abstract %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+				
+			</div>
+			<div>
+				<!-- agriculture all -->
+				{% if agriculture %}
+					<h4 class="domtxt">All Agriculture</h4>
+				<hr>
+					{% paginate agriculture %}
+					{% for abstracts in agriculture %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+				
+				<!-- arts all -->
+				{% if arts %}
+					<h4 class="domtxt">All Arts/Humanities</h4>
+				<hr>
+					{% paginate arts %}
+					{% for abstracts in arts %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- education all -->
+				{% if education %}
+					<h4 class="domtxt">All Education</h4>
+				<hr>
+					{% paginate education %}
+					{% for abstracts in education %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- engineering all -->
+				{% if engineering %}
+					<h4 class="domtxt">All Engineering/Technology/Environmental</h4>
+				<hr>
+					{% paginate engineering %}
+					{% for abstracts in engineering %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- law all -->
+				{% if law %}
+				 <h4 class="domtxt">All Law</h4>
+				<hr>
+					{% paginate law %}
+					{% for abstracts in law %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- medical all -->
+				{% if medical %}
+				 <h4 class="domtxt">All Medical</h4>
+				<hr>
+					{% paginate medical %}
+					{% for abstracts in medical %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- science all -->
+				{% if science %}
+				 <h4 class="domtxt">All Science</h4>
+				<hr>
+					{% paginate science %}
+					{% for abstracts in science %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+
+				<!-- management all -->
+				{% if management %}
+				 <h4 class="domtxt">All Management/Social</h4>
+				<hr>
+					{% paginate management %}
+					{% for abstracts in management %}
+
+						<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+						</a></h4>
+						{{abstracts.department}}  
+						{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+						
+						<span class="spanview">
+						{% if abstracts.views %}
+							{% if abstracts.views == 1 %}
+							{{abstracts.views}} View 
+							{% else %}
+							{{abstracts.views}} Views
+							{% endif %}
+						{% endif %}
+						</span>
+						
+
+						
+						<span class="spanreview">
+						{% if abstracts.num_review %}
+							{% if abstracts.num_review == 1 %}
+							 & {{abstracts.num_review}} Review 
+							{% else %}
+							 & {{abstracts.num_review}} Reviews
+							{% endif %}
+						{% endif %}
+						</span>
+						
+						
+						<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+												 	
+						 <hr>
+					{% endfor %}
+					<div align="center">{% show_pages %}</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<!-- 2nd column  -->
+		<div class="col-sm-4 col-md-4">
+			<div>
+			 <h4 class="domtxt">Most Viewed Abstracts:</h4>
+			 {% get_most_viewed %}
+			</div>
+			<br>
+
+			<div>
+			<h4 class="domtxt">Most Reviewed Abstracts:</h4>
+			{% get_most_reviewed %}
+			</div>
+
+			<br>
+
+			<div>
+			<h4 class="domtxt">Most Viewed Author Profile:</h4>
+			{% get_most_viewed_author %}
+			</div>
+
+			<br>
+			<div>
+			{% get_search_form %}
+			</div>
+
+			<div>
+			<!-- place adverts here -->
+			</div>
+		</div>		
+	</div>
+	<!-- end of first row -->
+</div>
+
+{% endblock %}
+
+
+
+
+			 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

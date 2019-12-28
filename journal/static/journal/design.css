@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    text-decoration: none;
+
+}
+
+
+#navmenu {
+	background-color: white;
+	border-bottom: solid 5px #008081;
+	
+}
+
+
+
+#like {
+	float: left;
+}
+
+.date {
+	margin-left: 60px;
+	
+}
+
+.spanview {
+	margin-left: 50px;
+}
+
+
+.glyphicon {
+	font-size: 10px;
+}
+
+
+#spanresult {
+	font-size: 20px;
+}
+
+#grace {
+	color: red;
+}
+
+
+#depart_menu {
+	margin-top: 80px;
+}
+
+
+#footer_menu {
+	margin-top: 50px;
+	margin-bottom: 10px;
+	text-align: center;
+	list-style: none;
+}
+
+#footer_menu li {
+
+	display: inline;
+}
+
+#footer_menu li:not(:first-child):before {
+	content: '|';
+	padding: 0px 10px;
+
+}
+
+#endfooter {
+	margin-bottom: 30px;
+}
+
+
+#menu_icon {
+
+	font-size: 20px;
+}
+
+
+#indexboard {
+	height: 300px;
+   	background-color: #008081;
+}
+
+
+.nobreak {
+	word-break: keep-all;
+}
+
+
+.domcolor {
+	background-color: #008081;
+}
+
+.txtcolor {
+	color: white;
+}
+
+.domtxt {
+	color: #008081;
+}
+
+#msg {
+	border-bottom: solid 1px #008081;
+	padding: 15px 0 15px 15px;
+}
+
+
+.fac_menu {
+	font-family: 'Rokkitt', serif;
+	font-size: 20px;
+}
+
+
+#navlogo {
+	font-family: 'Lobster', cursive;
+	font-size: 30px;
+	color: #008081;
+}
+
+
+.spanview {
+	white-space: nowrap;
+}
+
+.spanreview {
+	white-space: nowrap;
+}
+
+
+
+
+
+
+/*background picture*/
+
+
+/*#profilephoto {
+   width: 100%;
+    height: 300px;
+    background-image: url("/media/logopix/jessica-ruscello.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}*/
+
+
+
+/*acknowledgement of picture*/
+/*
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@jruscello?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jessica Ruscello">
+<span style="display:inline-block;padding:2px 3px">
+<svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z">
+</path></svg></span><span style="display:inline-block;padding:2px 3px">Jessica Ruscello</span></a>*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*font-family: 'Arvo', serif;
+font-family: 'Courgette', cursive;
+font-family: 'Lobster', cursive;
+font-family: 'Rokkitt', serif;
+font-family: 'Lora', serif;
+font-family: 'Squada One', cursive;
+font-family: 'Rubik', sans-serif;*/

@@ -1,0 +1,50 @@
+{% extends 'journal/base.html'%}
+{% load widget_tweaks %}
+
+<head><title>{% block head %}Login{% endblock %}</title></head>
+
+<h1>{% block title %}Login{% endblock %}</h1>
+
+{% block body %}
+
+<br><br><br><br><br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			
+
+		<div class="form-group login margintop" align="center">
+				<form method = 'post' action = '.'>
+					{% csrf_token%}
+					{% for hidden in form.hidden_fields %}
+  						{{ hidden }}
+					{% endfor %}
+
+					<div class="form-group">
+					{% render_field form.username class="form-control" placeholder='Username' %}<br>
+					{% render_field form.password class="form-control" placeholder='Password'%}<br>
+						<div align="left">
+							<input class="btn-primary domcolor" type = 'submit' value = 'Log in'/>
+							<input type = 'hidden'  name = 'next' value = '{{ next }}'/>
+							<a href="{% url 'password_reset' %}" class="domtxt"> Forgot password?</a><br><br>
+							<p class="domtxt">Not a user? <a href = '{% url 'registration_register' %}' class="domtxt"><strong>Sign Up</strong></a></p>
+						</div>
+					</div>
+				</form>
+
+	        <br>
+			
+		</div>
+
+			
+		</div>		
+	</div>	
+</div>
+
+<br><br><br><br><br><br><br>
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,49 @@
+{% extends 'journal/base.html' %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{% block head %}Profile{% endblock %}</title>
+</head>
+
+<body>
+
+<h1>{% block title %} Profile Registration {% endblock %}</h1>
+
+
+{% block body %}
+
+<br><br><br><br><br><br>  
+			<div class="row">
+                <div class=" form-group col-md-offset-4 col-md-4" align="left">
+                    <form action = '.' method = 'POST' enctype = 'multipart/form-data'>
+                    	<h4 class="domtxt">{%if update %}Profile Update{% else %}Profile Registration{% endif %}</h4>
+
+     					{% csrf_token %}
+              Fields marked * are optional. <br><br>
+              {% render_field form.title class="form-control" %}<br>
+              {% render_field form.firstname class="form-control" placeholder='Firstname' %}<br>
+              {% render_field form.lastname class="form-control" placeholder='Lastname' %}<br>
+              {% render_field form.organisation class="form-control" placeholder='Organisation *' %}<br>
+              {% render_field form.email class="form-control" placeholder='Email *' %}<br>
+              {% render_field form.website class="form-control" placeholder='Website *' %}<br>
+              {% render_field form.location class="form-control" placeholder='Location *' %}<br>
+              {% render_field form.research_interest class="form-control" placeholder='Research Interest(s) *' %}<br>
+              {% render_field form.awards class="form-control" placeholder='Academic Achievements/Awards *' %}
+              <br>
+              {% render_field form.hobbies class="form-control" placeholder='Hobbies *' %}<br>
+              {% render_field form.photo class="btn-primary btn-sm domcolor txtcolor"%}<br>
+                <input class = 'submit btn-primary domcolor txtcolor' type = 'submit' name = 'submit' value = 'Submit' />
+
+                    </form>
+                </div>
+            </div>
+
+
+{% endblock %}
+
+</body>
+
+
+</html>

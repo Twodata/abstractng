@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+{% load static %}
+
+<head>
+<meta charset = 'utf-8'>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block head %}Menu{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+
+
+<link rel="stylesheet" href="{% static 'fonts/glyphicons-halflings-regular.eot' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'fonts/glyphicons-halflings-regular.svg' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'fonts/glyphicons-halflings-regular.ttf' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'fonts/glyphicons-halflings-regular.woff' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static 'fonts/glyphicons-halflings-regular.woff2' %}" type="text/css"/> 
+
+<link rel='stylesheet' type='text/css' href='{% static 'journal/design.css' %}'/>
+<link rel='shortcut icon' type='image/png' href='{% static 'journal/abstract_favicon.ico' %}'/>
+
+<!-- google fonts -->
+<link href="https://fonts.googleapis.com/css?family=Arvo|Courgette|Lobster|Rokkitt|Lora|Rubik" rel="stylesheet">
+
+</head>
+
+<body>
+	
+	<nav class="navbar navbar-default navbar-fixed-top" id="navmenu">
+	<div class="container">
+			<div class="navbar-header" style="float: left;">
+				<a class="navbar-brand" href="{% url 'index' %}" id="navlogo">abstractng</a>
+			</div>
+		<ul id="nav-menu" class="nav nav-tabs" style="float: right;">
+						
+			<li class="dropdown">
+	  			<a class="dropdown-toggle " data-toggle="dropdown" href="#">
+	  			{% if not user.is_authenticated %}	
+	      		<span class="glyphicon glyphicon-user domtxt" id="menu_icon"></span>
+      			{% endif %}
+	    		{% if user.is_authenticated %}
+	    		<span class="glyphicon glyphicon-user domtxt"></span>
+	    		<span class="domtxt" style="font-family: 'Arvo', serif;">Hello {{ user.username }} ! </span>
+	    		{% endif %}
+	  			</a>
+	  			<ul class="dropdown-menu dropdown-menu-right">
+	  				<li><a href = '{% url 'index' %}'><strong class="domtxt">Home</strong></a></li>
+	  				<li><a href="{% url 'about' %}"><strong class="domtxt">About</strong></a></li>
+	  				<li><a href="{% url 'contact' %}"><strong class="domtxt">Contact</strong></a></li>
+	  				<li><a href="{% url 'add_abstract' %}"><strong class="domtxt">Add Abstract</strong></a></li>
+	  				{% if user.is_authenticated %}
+	  				<li><a href="{% url 'profile' user.username %}"><strong class="domtxt">Profile</strong></a></li>
+	    			<li><a href = '{% url 'auth_logout' %}?next=/journal/'><strong class="domtxt">Logout</strong></a></li>
+	    			{% else %}
+					<li><a href = '{% url 'auth_login' %}'><strong class="domtxt">Login</strong></a></li> 
+					<li><a href = '{% url 'registration_register' %}'><strong class="domtxt">Sign Up</strong></a></li>
+					{% endif %}  
+	  			</ul>
+			</li>
+			
+		</ul>
+	</div>
+	</nav>
+	
+
+
+
+
+{% block body %}{% endblock %}
+
+
+
+
+<!-- start of footer -->
+
+<footer class="site-footer">
+	<div class="container domtxt">
+		<!-- ist row -->
+		<div class="row" id="depart_menu">
+			<div class="col-md-4">
+				<!-- Agriculture -->
+					<div class="dropdown">
+						<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+							Agriculture<span class="caret"></span>
+						</span>
+						<ul class="dropdown-menu">
+							<li><a href = "{% url 'agriculture_all' %}">All</a></li>
+							<li><a href = "{% url 'agricultural_administration' %}">Agricultural Administration</a></li>
+							<li><a href = "{% url 'agricultural_business_finance' %}">Agricultural Business/Finance</a></li>
+							<li><a href = "{% url 'agricultural_economics' %}">Agricultural Economics</a></li>
+							<li><a href = "{% url 'agricultural_extension' %}">Agricultural Extension</a></li>
+							<li><a href = "{% url 'agronomy' %}">Agronomy</a></li>
+							<li><a href = "{% url 'animal_science' %}">Animal Science</a></li>
+							<li><a href = "{% url 'crop_science' %}">Crop Science</a></li>
+							<li><a href = "{% url 'fisheries' %}">Fisheries</a></li>
+							<li><a href = "{% url 'forestry' %}">Forestry</a></li>
+							<li><a href = "{% url 'soil_science' %}">Soil Science</a></li>
+							<li><a href = "{% url 'agriculture_topics' %}">Agriculture(Other topics)</a></li>			
+						</ul>
+					</div>
+			</div>	
+
+			<div class="col-md-4">
+				<!-- Arts/Humanities -->
+				<div class="dropdown">
+						<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+							Arts/Humanities<span class="caret"></span>
+						</span>
+						<ul class="dropdown-menu">
+							<li><a href = "{% url 'arts_all' %}">All</a></li>
+							<li><a href = "{% url 'anthropology' %}">Anthropology</a></li>
+							<li><a href = "{% url 'arabic_islamic_studies' %}">Arabic/Islamic Studies</a></li>
+							<li><a href = "{% url 'christian_studies' %}">Christian Studies</a></li>
+							<li><a href = "{% url 'communication_arts' %}">Communication Arts(Mass Communication etc)</a></li>
+							<li><a href = "{% url 'creative_arts' %}">Creative Arts(Fine Arts/Dramatic Arts/Music etc)</a></li>
+							<li><a href = "{% url 'english_literature' %}">English Language and Literature</a></li>
+							<li><a href = "{% url 'french' %}">French</a></li>
+							<li><a href = "{% url 'geography' %}">Geography</a></li>
+							<li><a href = "{% url 'hausa' %}">Hausa</a></li>
+							<li><a href = "{% url 'history_international_studies_diplomacy' %}">History/International Studies/Diplomacy</a></li>
+							<li><a href = "{% url 'igbo' %}">Igbo</a></li>
+							<li><a href = "{% url 'language_linguistics' %}">Language/Linguistics</a></li>
+							<li><a href = "{% url 'philosophy' %}">Philosophy</a></li>
+							<li><a href = "{% url 'political_science' %}">Political Science</a></li>
+							<li><a href = "{% url 'psychology' %}">Psychology</a></li>
+							<li><a href = "{% url 'religious_studies' %}">Religious Studies</a></li>
+							<li><a href = "{% url 'sociology' %}">Sociology</a></li>
+							<li><a href = "{% url 'yoruba' %}">Yoruba</a></li>
+							<li><a href = "{% url 'arts_humanities' %}">Arts/Humanities(Other topics)</a></li>						
+						</ul>
+					</div>
+			</div>
+
+			<div class="col-md-4">
+				<!-- Education -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Education<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'education_all' %}">All</a></li>
+						<li><a href = "{% url 'adult_nonformal_education' %}">Adult/Non-Formal Education</a></li>
+						<li><a href = "{% url 'curriculum_studies' %}">Curriculum Studies</a></li>
+						<li><a href = "{% url 'educational_administration_management' %}">Educational Administration/Management</a></li>
+						<li><a href = "{% url 'guidance_counselling' %}">Guidance and Counselling</a></li>
+						<li><a href = "{% url 'library_studies' %}">Library Studies</a></li>
+						<li><a href = "{% url 'nursery_primary_education' %}">Nursery/Primary Education</a></li>
+						<li><a href = "{% url 'physical_health_education' %}">Physical and Health Education</a></li>
+						<li><a href = "{% url 'special_education' %}">Special Education</a></li>
+						<li><a href = "{% url 'teacher_education' %}">Teacher Education</a></li>
+						<li><a href = "{% url 'education_other' %}">Education(Other topics)</a></li>
+									
+					</ul>
+				</div>
+			</div>			
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<!-- Engineering/Environmental/Technology -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Engineering/Environmental/Technology<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'engineering_all' %}">All</a></li>
+						<li><a href = "{% url 'agricultural_engineering' %}">Agricultural Engineering</a></li>
+						<li><a href = "{% url 'architecture' %}">Architecture</a></li>
+						<li><a href = "{% url 'biomedical' %}">Biomedical</a></li>
+						<li><a href = "{% url 'chemical_petroleum_gas' %}">Chemical/Petroleum/Gas</a></li>
+						<li><a href = "{% url 'civil' %}">Civil</a></li>
+						<li><a href = "{% url 'computer' %}">Computer</a></li>
+						<li><a href = "{% url 'electrical_electronics' %}">Electrical/Electronics</a></li>
+						<li><a href = "{% url 'estate_management' %}">Estate Management</a></li>
+						<li><a href = "{% url 'food_engineering_technology' %}">Food Engineering/Technology</a></li>
+						<li><a href = "{% url 'land_quantity_surveying' %}">Land/Quantity Surveying</a></li>
+						<li><a href = "{% url 'marine' %}">Marine</a></li>
+						<li><a href = "{% url 'mechanical_production' %}">Mechanical/Production</a></li>
+						<li><a href = "{% url 'metallurgical_materials' %}">Metallurgical and Materials</a></li>
+						<li><a href = "{% url 'polymer_textile' %}">Polymer and Textile</a></li>
+						<li><a href = "{% url 'software' %}">Software</a></li>
+						<li><a href = "{% url 'urban_regional_planning' %}">Urban and Regional Planning</a></li>
+						<li><a href = "{% url 'water_resources_environmental' %}">Water Resources/Environmental</a></li>
+						<li><a href = "{% url 'engineering_environmental_technology' %}">Engineering/Environmental/Technology(Other topics)</a></li>			
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<!-- Law -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Law<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'law_all' %}">All</a></li>
+						<li><a href = "{% url 'civil_law' %}">Civil Law</a></li>
+						<li><a href = "{% url 'common_law' %}">Common Law</a></li>
+						<li><a href = "{% url 'international_law_jurisprudence' %}">International Law and Jurisprudence</a></li>
+						<li><a href = "{% url 'islamic_sharia_law' %}">Islamic/Sharia Law</a></li>
+						<li><a href = "{% url 'public_law' %}">Public Law</a></li>
+						<li><a href = "{% url 'law_others' %}">Law(Other topics)</a></li>					
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<!-- Medical -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Medical<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'medical_all' %}">All</a></li>
+						<li><a href = "{% url 'basic_medical' %}">Basic Medical Sciences</a></li>
+						<li><a href = "{% url 'dentistry_dental_technology' %}">Dentistry/Dental Technology</a></li>
+						<li><a href = "{% url 'human_medicine' %}">Human Medicine</a></li>
+						<li><a href = "{% url 'human_nutrition_dietetics' %}">Human Nutrition/Dietetics</a></li>
+						<li><a href = "{% url 'medical_laboratory_science_technology' %}">Medical Laboratory Science/Technology</a></li>
+						<li><a href = "{% url 'nursing' %}">Nursing</a></li>
+						<li><a href = "{% url 'optometry' %}">Optometry</a></li>
+						<li><a href = "{% url 'pharmacy_pharmacology' %}">Pharmacy/Pharmacology</a></li>
+						<li><a href = "{% url 'physiotherapy' %}">Physiotherapy</a></li>
+						<li><a href = "{% url 'public_health' %}">Public Health</a></li>
+						<li><a href = "{% url 'radiography' %}">Radiography</a></li>
+						<li><a href = "{% url 'veterinary_medicine' %}">Veterinary Medicine</a></li>
+						<li><a href = "{% url 'medical_others' %}">Medical(Other topics)</a></li>			
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<!-- Science -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Science<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'science_all' %}">All</a></li>
+						<li><a href = "{% url 'animal_environmental_biology_zoology' %}">Animal and Environmental Biology/Zoology</a></li>
+						<li><a href = "{% url 'biochemistry' %}">Biochemistry</a></li>
+						<li><a href = "{% url 'biotechnology_genetics' %}">Biotechnology/Genetics</a></li>
+						<li><a href = "{% url 'botany' %}">Botany</a></li>
+						<li><a href = "{% url 'chemistry' %}">Chemistry</a></li>
+						<li><a href = "{% url 'computer_science' %}">Computer Science</a></li>
+						<li><a href = "{% url 'geology' %}">Geology</a></li>
+						<li><a href = "{% url 'mathematics_statistics' %}">Mathematics/Statistics</a></li>
+						<li><a href = "{% url 'microbiology' %}">Microbiology</a></li>
+						<li><a href = "{% url 'physics' %}">Physics</a></li>
+						<li><a href = "{% url 'science_others' %}">Science(Other topics)</a></li>					
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<!-- Social/Management -->
+				<div class="dropdown">
+					<span class="dropdown-toggle fac_menu" data-toggle="dropdown">
+						Social/Management<span class="caret"></span>
+					</span>
+					<ul class="dropdown-menu">
+						<li><a href = "{% url 'management_all' %}">All</a></li>
+						<li><a href = "{% url 'accounting' %}">Accounting</a></li>
+						<li><a href = "{% url 'banking_finance' %}">Banking and Finance</a></li>
+						<li><a href = "{% url 'business_administration' %}">Business Administration</a></li>
+						<li><a href = "{% url 'economics' %}">Economics</a></li>
+						<li><a href = "{% url 'entrepreneurship' %}">Entrepreneurship</a></li>
+						<li><a href = "{% url 'insurance_actuarial_science' %}">Insurance/Actuarial Science</a></li>
+						<li><a href = "{% url 'marketing' %}">Marketing</a></li>
+						<li><a href = "{% url 'project_personnel_management' %}">Project/Personnel Management</a></li>
+						<li><a href = "{% url 'public_administration_relation' %}">Public Administration/Relation</a></li>
+						<li><a href = "{% url 'taxation' %}">Taxation</a></li>
+						<li><a href = "{% url 'social_management_others' %}">Social/Management(Other topics)</a></li>					
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div><a href="{% url 'abstract_list' %}" class="domtxt fac_menu">All</a></div>
+			</div>
+		</div>		
+	</div>
+<br>
+		<div class="container-fluid domcolor txtcolor">
+			<div class="row">
+				<ul id="footer_menu" class="txtcolor">
+					<li><a href = '{% url 'index' %}' class="txtcolor"><strong>Home</strong></a></li>
+					<li><a href = '{% url 'about' %}' class="txtcolor"><strong>About</strong></a></li>
+					<li><a href = '{% url 'contact' %}' class="txtcolor"><strong>Contact</strong></a></li>
+					<li><a href="{% url 'add_abstract' %}" class="txtcolor"><strong>Add Abstract</strong></a></li>
+					<li><a href="{% url 'policy' %}" class="txtcolor"><strong>Privacy Policy</strong></a></li>
+				</ul>
+			</div>
+			
+			<hr>
+			<div class="row" id="endfooter">
+				<div align="center">
+					Abstractng - Copyright &copy  2019. All rights reserved.
+				</div>
+			
+			</div>
+		</div>
+</footer>
+
+<!-- end of footer -->
+
+<script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'notify/notifyX.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/my_javascript.js' %}"></script>
+
+</body>
+
+</html>
+

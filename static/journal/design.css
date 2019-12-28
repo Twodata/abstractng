@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    text-decoration: none;
+}
+
+
+#msg {
+	border: solid 2px green;
+	padding-left: 5px;
+}
+
+
+#like {
+	float: left;
+}
+
+.date {
+	float: right;
+	margin-right: 30px;
+}
+
+.spanview {
+	margin-left: 70px;
+}
+
+
+.glyphicon {
+	font-size: 10px;
+}
+
+
+#spanresult {
+	font-size: 20px;
+}
+
+#grace {
+	color: red;
+}

@@ -1,0 +1,117 @@
+{% extends 'journal/base.html' %}
+{% load utility_tags %}
+{% load el_pagination_tags %}
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<title>{% block head %}Search Result{% endblock %}</title>
+	</head>
+
+	<body>
+		
+			<h1>{% block title %}Search Result{% endblock %}</h1>
+
+		{% block body %}
+		<br><br><br>
+		<div class="container">
+			<!-- 1st row -->
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="domtxt"><span class='glyphicon glyphicon-search' id="spanresult"></span> Search Result</h4>
+				</div>				
+			</div>
+			
+			<!-- 2nd row -->
+			<div class="row">
+				<!-- 1st column -->
+				<div class="col-md-8">
+					<div>
+						{% if result %}
+							<hr>
+							{% paginate result %}
+							{% for abstracts in result %}
+
+								<h4><a href='{% url 'abstract_detail' slug=abstracts.slug %}'>{{ abstracts.topic }}
+								</a></h4>
+								{{abstracts.department}}  
+								{% if abstracts.publication %} <span class="glyphicon glyphicon-asterisk"></span> Published{% else %} <span class="glyphicon glyphicon-asterisk"></span> Unpublished{% endif %}
+
+								<span class="spanview">
+								{% if abstracts.views %}
+									{% if abstracts.views == 1 %}
+									{{abstracts.views}} View 
+									{% else %}
+									{{abstracts.views}} Views
+									{% endif %}
+								{% endif %}
+								</span>
+								
+								<span class="spanreview">
+								{% if abstracts.num_review %}
+									{% if abstracts.num_review == 1 %}
+									 & {{abstracts.num_review}} Review 
+									{% else %}
+									 & {{abstracts.num_review}} Reviews
+									{% endif %}
+								{% endif %}
+								</span>
+								
+								<span class="date"><span class="glyphicon glyphicon-time"></span> {{abstracts.date_added}}</span>
+														 	
+								 <hr>
+							{% endfor %}
+							<div align="center">{% show_pages %}</div>
+						{% else %}
+						<br>
+						 <p class="lead domtxt">Sorry, no match was found for this search!</p>
+						{% endif %}
+					</div>												
+				</div>
+				
+				<!-- 2nd column -->
+				<div align="center">
+					<div>
+						<form method='GET' action='/journal/search/'>
+							<input class="form-control-xs" type='text' name='search' value='{{request.GET.search}}' placeholder = ' Search topics' required=True />
+							<button type="submit" class="btn btn-xs domcolor txtcolor">Search</button>
+						</form>
+					</div>	
+				</div>
+			</div>
+		</div>
+		{% endblock %}
+	             
+		
+	</body>
+</html>
+
+
+{% for results in result %}
+								<p><a href = '{% url 'abstract_detail' slug=results.slug %}'>
+								<h5>{{ results.topic}}</h5></a></p>
+							{% empty %}
+								<h4><strong><em>No match was found for this search!</em></strong></h4>
+							{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

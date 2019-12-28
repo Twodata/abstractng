@@ -1,0 +1,32 @@
+{% extends 'journal/base.html' %}
+
+<html>
+
+<head>
+	<title>{% block head %}About{% endblock %}</title>
+</head>
+<body>
+
+{% block body %}
+<br><br><br><br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h3 class="domtxt">{% block title %}About AbstractNg{% endblock %}</h3>
+
+			<p class="lead">Abstractng is an online archive of undergraduate and postgraduate theses, as well as  scholarly papers from inaugural lectures, conferences and workshops.</p>
+			<p class="lead">Abstractng showcases the intellectual work of authors/individuals to a wide audience and creates opportunities for research collaboration as well as mentorship.</p>
+			<p class="lead">Reviews in abstractng are contributions to an abstract or a paper with the aim of increasing understanding of the topic or subject been covered. These contributions can be in the form of additional information, questions/seeking clarifications on grey areas, references etc.</p>
+			<p class="lead">You can contribute to the body of knowledge by <a href = '{% url 'add_abstract' %}' class="domtxt">adding that abstract/paper on abstractng.</a></p>
+		</div>
+	</div>
+</div>
+		
+{% endblock %}
+
+</body>
+</html>
+
+
+ 

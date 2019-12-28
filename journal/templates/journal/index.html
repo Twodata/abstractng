@@ -1,0 +1,111 @@
+{% extends 'journal/base.html' %}
+{% load utility_tags %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block head %}Abstractng</title>{% endblock %}
+	</head>
+
+	<body>
+	{% block body %}
+	<br><br>
+	<!-- jumbotron board -->
+		<div class="container-fluid">
+			<div class="row jumbotron" id="indexboard">
+				<div class="col-md-12">
+					<div align="center" class="txtcolor">
+						<h1 style="font-family: 'Lobster', cursive;">abstractng</h1>
+						<p><em style="font-family: 'Courgette', cursive;">...library of academic thesis & scholarly papers.</em></p>
+					</div>					
+				</div>				
+			</div>			
+		</div>
+	
+
+	<!-- 2nd row -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div align="center" class="domtxt">
+						<div>
+						<h4 class="lead" style="font-family: 'Rokkitt', serif;">Contributing to the body of knowledge with {{abstracts|length}} abstracts.</h4>
+						</div>
+						<br>
+
+						<!-- Slide/Carousel Implementation-->
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+								<!-- Carousel indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#myCarousel" data-slide-to="1"></li>
+									<li data-target="#myCarousel" data-slide-to="2"></li>
+									<li data-target="#myCarousel" data-slide-to="3"></li>
+									<li data-target="#myCarousel" data-slide-to="4"></li>
+									<li data-target="#myCarousel" data-slide-to="5"></li>
+									<li data-target="#myCarousel" data-slide-to="6"></li>
+									<li data-target="#myCarousel" data-slide-to="7"></li>
+									<li data-target="#myCarousel" data-slide-to="8"></li>
+									<li data-target="#myCarousel" data-slide-to="9"></li>
+									<li data-target="#myCarousel" data-slide-to="10"></li>
+									<li data-target="#myCarousel" data-slide-to="11"></li>
+									<li data-target="#myCarousel" data-slide-to="12"></li>
+									<li data-target="#myCarousel" data-slide-to="13"></li>
+									<li data-target="#myCarousel" data-slide-to="14"></li>
+									<li data-target="#myCarousel" data-slide-to="15"></li>
+									<li data-target="#myCarousel" data-slide-to="16"></li>
+									<li data-target="#myCarousel" data-slide-to="17"></li>
+									<li data-target="#myCarousel" data-slide-to="18"></li>
+									<li data-target="#myCarousel" data-slide-to="19"></li>						
+								</ol>
+
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner" role="listbox">
+									{% for abstract in index_abstract %}
+										{% if forloop.counter == 1 %}
+											<div class="item active">
+										{% else %}
+											<div class="item">
+										{% endif %}
+											<div>
+												<h4><em><a href='{% url 'abstract_detail' slug=abstract.slug %}' class="domtxt">{{abstract.topic}}</a></em></h4>
+											</div>
+
+											<div class="carousel-caption">
+											 
+											</div>
+																																
+											
+												</div>
+									{% endfor %}
+								</div>
+
+								<!-- Left and right controls -->
+								<a href="#myCarousel" class="left carousel-control domcolor" role="button" data-slide="prev">
+									<span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="font-size: 20px"></span>
+									<span class="sr-only">Previous</span>									
+								</a>
+
+								<a href="#myCarousel" class="right carousel-control domcolor" role="button" data-slide="next">
+									<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="font-size: 20px"></span>
+									<span class="sr-only">Next</span>									
+								</a>
+									
+							</div>
+						<!-- End of silde/Carousel -->
+
+						<!-- <div>
+						  <span class="glyphicon glyphicon-pencil" id="menu_icon"><a href="{% url 'add_abstract' %}" class="domtxt fac_menu">Abstract</a></span>
+						</div> -->
+
+					</div>
+				</div>
+			</div>			
+		</div>
+
+	{% endblock %}
+	</body>
+
+</html>
+
+

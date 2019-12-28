@@ -1,0 +1,210 @@
+{% extends 'journal/base.html' %}
+{% load widget_tweaks %}
+{% load utility_tags %}
+
+
+
+{% block head %}Abstract: {{abstract.department}}{% endblock %}
+
+
+{% block body %}
+<br><br><br><br><br>
+
+<div class="container">
+	<!-- abstract detail row -->
+	<div class="row">
+		<!-- author profile column -->
+		<div class="col-md-3">
+			<h4 class="domtxt">Author</h4>
+			<div>	
+				{% if user.is_authenticated %}
+				{% if authorprofile.photo != 'photo' %}
+				<img class="img-responsive img-thumbnail" src='{{ MEDIA_URL }}{{authorprofile.photo}}' height="150" width="200">
+				{% endif %}
+				{% endif %}
+			</div>
+			<br>
+			<div class="domtxt">
+				{{authorprofile.get_author}}
+			</div>
+			<div class="domtxt">	
+				{% if user.is_authenticated %}
+				{{authorprofile.organisation}}
+				{% endif %}
+			</div>
+			<hr>
+			<div class="domtxt">	
+				Abstracts: {{num_abstract|length}}<br>
+				Reviews: {{num_review|length}}
+			</div>
+			<hr>
+			<div>
+				<a href = '{% url 'profile' username=authorprofile.user.username %}' class="domtxt">View Full Profile</a>
+			</div>
+			<hr>
+			<br><br>
+		</div>
+
+		<!-- abstract detail column -->
+		<div class="col-md-6">
+			<div>
+				<div style="border-bottom: solid 2px #008081;"><h4><strong>{{abstract.topic }}</strong></h4></div>
+				<br>
+				<div style="font-family: 'Lora', serif; font-size: 18px;">{{abstract.content|safe}}</div>
+				<div>
+					{% if abstract.image1 != 'image' %}
+					<img class="img-responsive img-rounded" src = '{{ MEDIA_URL }}{{abstract.image1}}' height = '300' width = '400' data-toggle="modal" data-target="#firstImage" type="button" class="btn btn-primary" alt="{{articles.topic}}">
+					{% endif %}
+					<!-- Start of modal popup -->
+					<div id="firstImage" class="modal fade" tabindex="-1" role="dialog">
+					  <div class="modal-dialog modal-lg">
+					    <div class="modal-content">
+					        <div class="modal-body" align="center">
+					            <img src='{{ MEDIA_URL }}{{abstract.image1}}' height = '600' width = '800' class="img-responsive">
+					        </div>
+					    </div>
+					  </div>
+					</div>
+					<!-- End of modal popup -->
+				</div>
+				<br>
+				<div>
+					{% if abstract.image1 != 'image' %}
+					<img class="img-responsive img-rounded" src = '{{ MEDIA_URL }}{{abstract.image2}}' height = '300' width = '400' data-toggle="modal" data-target="#secondImage" type="button" class="btn btn-primary" alt="{{articles.topic}}">
+					{% endif %}
+					<!-- Start of modal popup -->
+					<div id="secondImage" class="modal fade" tabindex="-1" role="dialog">
+					  <div class="modal-dialog modal-lg">
+					    <div class="modal-content">
+					        <div class="modal-body" align="center">
+					            <img src='{{ MEDIA_URL }}{{abstract.image2}}' height = '600' width = '800' class="img-responsive">
+					        </div>
+					    </div>
+					  </div>
+					</div>
+					<!-- End of modal popup -->
+				</div>
+				<br>
+				<div>
+					{% if abstract.image1 != 'image' %}
+					<img class="img-responsive img-rounded" src = '{{ MEDIA_URL }}{{abstract.image3}}' height = '300' width = '400' data-toggle="modal" data-target="#thirdImage" type="button" class="btn btn-primary" alt="{{articles.topic}}">
+					{% endif %}
+					<!-- Start of modal popup -->
+					<div id="thirdImage" class="modal fade" tabindex="-1" role="dialog">
+					  <div class="modal-dialog modal-lg">
+					    <div class="modal-content">
+					        <div class="modal-body" align="center">
+					            <img src='{{ MEDIA_URL }}{{abstract.image3}}' height = '600' width = '800' class="img-responsive">
+					        </div>
+					    </div>
+					  </div>
+					</div>
+					<!-- End of modal popup -->
+				</div>
+				<br>
+				<div style="border-top: solid 2px #008081;">
+					{% if abstract.publication %}
+					<strong class="domtxt">Published:</strong> <em>{{abstract.publication}}</em>
+					{% else %}
+					<strong class="domtxt">Unpublished</strong>
+					{% endif %}
+				</div>
+				
+				<div>
+					<strong class="domtxt">Author:</strong>  {{abstract.author }}
+					{% if abstract.co_authors %}
+					<br>
+					<strong class="domtxt">Co-author(s):</strong>  {{abstract.co_authors}}
+					{% endif %}
+				</div>
+				<div><strong class="domtxt">Posted: </strong> {{abstract.date_added }}</div>
+
+				<div>
+					{% if reviews %}
+						{% if reviews|length == 1%}
+							<strong class="domtxt">Review:</strong>  {{reviews|length}}
+						{% else %}
+							<strong class="domtxt">Reviews:</strong>  {{reviews|length}}
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+			<br>
+			<div>
+				
+							{% if user.is_authenticated %}
+								<form action="{% url 'add_review' slug=abstract.slug %}" method = 'POST'>	 
+									{% csrf_token %}
+									{{ form.media }}
+									{% render_field form.text class="form-control" rows="5" cols="50" placeholder='Review abstract ...' %}<br>
+									<button type='submit' class='save btn btn-primary btn-xs domcolor txtcolor'>Review</button>
+
+								</form>
+							{% endif %}
+							<br>
+							{% if reviews %}								
+									<div id="content">
+										<h4 class="domtxt">Reviews</h4>
+										<hr>
+										{% for review in reviews %}
+											{{review.text|safe}}<br><br>
+											<div align="right">
+												<span id="like">
+
+													{% if abstract.added_by == request.user.username %}
+													(<a href = '{% url 'remove_review' pk=review.pk %}' class="domtxt delreview">Delete</a>)
+													{% endif %}
+
+													
+													{% if review.likes %}
+														{% if review.likes == 1 %}
+														{{review.likes}} Like {% else %}
+														{{review.likes}} Likes {% endif %}
+													{% endif %}
+													
+
+													
+																							
+													
+													
+													
+													{% if user.is_authenticated %}
+													(<a href='{% url 'liked_review' pk=review.pk %}' class="domtxt likereview"  data-like="{{reviews}}">Like</a>)
+													{% endif %}</span>
+												<em><strong>- <a href = '{% url 'profile' username=review.added_by %}'class="domtxt">{{review.review_author}}</a></strong>, {{review.date_added}}.</em>
+											</div>
+											<hr>
+										{% endfor %}
+									</div>								
+							{% endif %}
+
+							
+					
+			</div>
+		</div>
+
+		<!-- related abstracts column -->
+		<div class="col-md-3">		
+		{% if related_abstracts %}
+		<h4 class="domtxt">Related Abstract</h4>
+			{% for abstract in related_abstracts %}
+				<div>							
+					<p>
+						<strong><a href = '{% url 'abstract_detail' slug=abstract.slug %}'>
+						{{abstract.topic}}</a></strong>
+					</p>
+								
+				</div><hr>
+			{% endfor %}
+		{% else %}
+				<p><em class="domtxt">No related article yet!</em></p>
+		{% endif %}	
+		</div>
+		
+	</div>	
+	<!-- end of abstract detail row -->
+</div>
+
+{% endblock %}
+
+
